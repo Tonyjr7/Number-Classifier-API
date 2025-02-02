@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["number-classifier-api.onrender.com"]
+ALLOWED_HOSTS = ["numberclassifier-v8md.onrender.com"]
 
 
 # Application definition
