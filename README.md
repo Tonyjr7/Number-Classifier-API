@@ -56,7 +56,7 @@ GET /api/classify-number?number=371
 ### **1. Clone the Repository**
 ```sh
 git clone https://github.com/Tonyjr7/Number-Classifier-API.git
-cd Number-Classification-API
+cd Number-Classifier-API
 ```
 
 ### **2. Create a Virtual Environment**
