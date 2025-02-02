@@ -16,7 +16,7 @@ class ClassifyNumbersView(APIView):
 
         # Check if the number parameter is provided
         if number_str is None:
-            return Response({"error":True}, status=400)
+            return Response({"number":"alphabet", "error":True}, status=400)
 
         #Check if the received number is a number
         if number_str.isdigit() == False:
