@@ -1,0 +1,1 @@
+web: gunicorn number_classifier.wsgi
