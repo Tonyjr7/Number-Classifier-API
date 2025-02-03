@@ -17,7 +17,7 @@ class ClassifyNumbersView(APIView):
         if number_str is None:
             return Response({"error": True}, status=400)
 
-        if not number_str.lstrip('-').isdigit():
+        if not number_str.isdigit():
             # Return the response with the parameter
             return Response({"number": number_str, "error": True}, status=400)
         
