@@ -61,7 +61,7 @@ class ClassifyNumbersView(APIView):
         # Add properties to response
         properties = []
         if check_armstrong_status is True:
-            properties.append("is_armstrong")
+            properties.append("armstrong")
         if number % 2 != 0:
             properties.append("odd")
         else:
