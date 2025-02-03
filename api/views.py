@@ -14,14 +14,13 @@ class ClassifyNumbersView(APIView):
         # Get the number
         number_str = request.GET.get('number')
 
-        if number_str is None:
-            return Response({"error": True}, status=400)
-
-        if not number_str.isdigit():
-            # Return the response with the parameter
+        if not re.match(r"^-?\d+$", number_str):
             return Response({"number": number_str, "error": True}, status=400)
-        
-        number = int(number_str) #convert number to integer
+
+        try:
+            number = int(number_str)  # Parse the number
+        except ValueError:
+            return Response({"number": number_str, "error": True}, status=400)
 
         if number < 0:
             return Response({"number":number_str,"error": True,}, status=400)
