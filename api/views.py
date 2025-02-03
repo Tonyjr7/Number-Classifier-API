@@ -14,13 +14,9 @@ class ClassifyNumbersView(APIView):
         # Get the number
         number_str = request.GET.get('number')
 
-        # Check if the number parameter is provided
-        if number_str is None:
-            return Response({"number":"alphabet", "error":True}, status=400)
-
-        #Check if the received number is a number
-        if number_str.isdigit() == False:
-            return Response({"number":"alphabet", "error":True}, status=400)
+        if number_str is None or not number_str.isdigit():
+            # Return the response with "alphabet" in the "number" position
+            return Response({"number": number_str, "error": True}, status=400)
         
         number = int(number_str) #convert number to integer
 
