@@ -15,7 +15,7 @@ class ClassifyNumbersView(APIView):
         number_str = request.GET.get('number')
 
         if number_str is None or not number_str.isdigit():
-            # Return the response with "alphabet" in the "number" position
+            # Return the response with the parameter
             return Response({"number": number_str, "error": True}, status=400)
         
         number = int(number_str) #convert number to integer
