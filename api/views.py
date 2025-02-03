@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework.renderers import JSONRenderer
 import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -7,6 +8,7 @@ from rest_framework.response import Response
 from api.serializers import NumberSerializer
 
 class ClassifyNumbersView(APIView):
+    renderer_classes = [JSONRenderer]
     serializer_class = NumberSerializer
     def get(self, request, *args, **kwargs):
         # Get the number
@@ -20,6 +22,9 @@ class ClassifyNumbersView(APIView):
             return Response({"number": number_str, "error": True}, status=400)
         
         number = int(number_str) #convert number to integer
+
+        if number < 0:
+            return Response({"number":number_str,"error": True,}, status=400)
 
         #query the NumbersAPI
         url = f"http://numbersapi.com/{number}/math"
