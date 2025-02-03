@@ -1,7 +1,7 @@
 # Number Classification API
 
 ## Overview
-The **Number Classification API** is a RESTful API built using Django and Django REST Framework (DRF). It takes a number as input and returns its mathematical properties along with a fun fact retrieved from the Numbers API.
+The **Number Classification API** is a RESTful API built using Django and Django REST Framework (DRF). It takes a number as input, including negative numbers, and returns its mathematical properties along with a fun fact retrieved from the Numbers API.
 
 ## Backlink
 Backlink to python developers: https://hng.tech/hire/python-developers
@@ -11,7 +11,7 @@ Backlink to python developers: https://hng.tech/hire/python-developers
 - Checks if a number is **perfect**
 - Identifies if a number is an **Armstrong number**
 - Classifies the number as **odd or even**
-- Computes the **sum of its digits**
+- Computes the **sum of its digits**, handling negative numbers by summing the absolute values and appending a `-` if the original number was negative
 - Fetches a **fun fact** about the number from the Numbers API
 - Returns responses in **JSON format**
 - Handles invalid input with appropriate error messages
@@ -31,17 +31,17 @@ Backlink to python developers: https://hng.tech/hire/python-developers
 
 ### **Example Request**
 ```sh
-GET /api/classify-number?number=371
+GET /api/classify-number?number=-371
 ```
 
 ### **Success Response (200 OK)**
 ```json
 {
-    "number": 371,
+    "number": -371,
     "is_prime": false,
     "is_perfect": false,
     "properties": ["armstrong", "odd"],
-    "digits_sum": 11,
+    "digit_sum": "-11",
     "fun_fact": "371 is an Armstrong number because 3^3 + 7^3 + 1^3 = 371"
 }
 ```
@@ -92,4 +92,3 @@ The API will now be available at `http://127.0.0.1:8000/api/classify-number?numb
 
 ## Contribution
 Contributions are welcome! Please fork the repository, make your changes, and submit a pull request.
-
