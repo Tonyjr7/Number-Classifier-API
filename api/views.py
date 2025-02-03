@@ -14,7 +14,10 @@ class ClassifyNumbersView(APIView):
         # Get the number
         number_str = request.GET.get('number')
 
-        if number_str is None or not number_str.isdigit():
+        if number_str is None:
+            return Response({"error": True}, status=400)
+
+        if not number_str.lstrip('-').isdigit():
             # Return the response with the parameter
             return Response({"number": number_str, "error": True}, status=400)
         
